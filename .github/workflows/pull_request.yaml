@@ -34,7 +34,7 @@ jobs:
         with:
           context: . 
           push: false
-          tags: hiteshwani29/book-backend-svc:${{ github.sha}}
+          tags: hiteshwani29/book-backend-svc:${{ github.sha }}
       - name: Push Docker Image
         run: |
           docker push hiteshwani29/book-backend-svc:$GITHUB_SHA
