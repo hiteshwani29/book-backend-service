@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: . 
-          push: ${{ github.event_name==push }}
+          push: ${{ github.event_name=='push' }}
           tags: hiteshwani29/book-backend-svc:${{ github.sha }}
       # - name: Push Docker Image
       #   run: |
@@ -50,4 +50,4 @@ jobs:
           token: ${{ secrets.PAT }}  # Personal Access Token with repo scope
           repository: ${{ github.actor }}/bookApp-deploy  # Deployment repository
           event-type: deploy
-          client-payload: '{"image": "hiteshwani29/book-backend-svc:${GITHUB_SHA}","path":"deployment-yamls/deployment-book-backend.yaml"}'
+          client-payload: '{"image": "hiteshwani29/book-backend-svc:${{ github.sha }}","path":"deployment-yamls/deployment-book-backend.yaml"}'
