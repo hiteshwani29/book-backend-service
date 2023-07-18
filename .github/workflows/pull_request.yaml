@@ -34,11 +34,11 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: . 
-          push: false
+          push: ${{ github.event_name==push }}
           tags: hiteshwani29/book-backend-svc:${{ github.sha }}
-      - name: Push Docker Image
-        run: |
-          docker push hiteshwani29/book-backend-svc:$GITHUB_SHA
+      # - name: Push Docker Image
+      #   run: |
+      #     docker push hiteshwani29/book-backend-svc:$GITHUB_SHA
   trigger_deployment:
     needs: docker-build
     runs-on: ubuntu-latest
